@@ -23,11 +23,8 @@ call vundle#rc()
 " nerdtree
 Bundle 'scrooloose/nerdtree'
 
-" snipmate
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "honza/snipmate-snippets"
-Bundle "garbas/vim-snipmate"
+" ultisnips
+Bundle "SirVer/ultisnips"
 
 " zen coding
 Bundle "mattn/zencoding-vim"
@@ -48,7 +45,7 @@ Bundle "uggedal/jinja-vim"
 Bundle "scrooloose/syntastic"
 
 " color wombat
-Bundle "vim-scripts/Wombat"
+Bundle "khairihafsham/Wombat"
 
 " Vim5 and later versions support syntax highlighting. Uncommenting the
 " following enables syntax highlighting by default.
@@ -115,6 +112,9 @@ let g:snips_author = 'khairi'
 set guioptions-=m
 set guioptions-=T
 set mousemodel=popup
+
+" set initial width and height on launch
+set lines=30 columns=120
 
 "php lint
 map <C-B> :!php -l %<CR>
