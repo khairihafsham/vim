@@ -140,12 +140,9 @@ set number
 " ignore .pyc file in nerdtree
 let NERDTreeIgnore = ['\.pyc$']
 
-" set current cursor position to be blue and stop
-" fucking blinking when not in insert mode
-"highlight Cursor guifg=white guibg=steelblue
-"highlight iCursor guifg=white guibg=steelblue
-"set guicursor=n-v-c:block-Cursor
-"set guicursor+=n-v-c:blinkon0
+" set current cursor position to be blue
+highlight Cursor guifg=white guibg=steelblue
+highlight iCursor guifg=white guibg=steelblue
 
 au BufNewFile,BufRead *.jinja2 set filetype=jinja.html.javascript.css
 
