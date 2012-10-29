@@ -91,7 +91,7 @@ set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set backupdir=/home/jumanjisama/.vim_backups
+set backupdir= ~/.vim_backups
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 nnoremap <silent> <C-P> :NERDTreeToggle<CR> 
 
