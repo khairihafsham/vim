@@ -20,6 +20,9 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+" pep8 indent
+Bundle 'hynek/vim-python-pep8-indent'
+
 " nerdtree
 Bundle 'scrooloose/nerdtree'
 
@@ -69,6 +72,8 @@ endif
 "   filetype plugin indent on
 " endif
 
+filetype indent on
+
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
 set showcmd		" Show (partial) command in status line.
@@ -83,8 +88,8 @@ set mouse=a		" Enable mouse usage (all modes)
 set hlsearch
 set langmenu=en_US.UTF-8
 colorscheme wombat 
-set autoindent
-set smartindent
+" set autoindent
+" set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -149,3 +154,5 @@ au BufNewFile,BufRead *.jinja2 set filetype=jinja.html.javascript.css
 " remap increment and decrement
 :nnoremap <A-a> <C-a>
 :nnoremap <A-x> <C-x>
+
+let g:syntastic_python_flake8_post_args='--ignore=E128,E133,E126,E127,E124,E123,W601'
