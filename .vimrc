@@ -50,6 +50,12 @@ Bundle "scrooloose/syntastic"
 " color wombat
 Bundle "khairihafsham/Wombat"
 
+" rainbow parentheses
+Bundle 'amdt/vim-niji'
+
+" slimv, lisp support for vim
+Bundle 'vim-scripts/slimv.vim'
+
 " Vim5 and later versions support syntax highlighting. Uncommenting the
 " following enables syntax highlighting by default.
 if has("syntax")
@@ -114,12 +120,23 @@ nnoremap <silent> <C-S> :w!<CR>
 nnoremap <C-TAB> <C-W>w
 
 let g:snips_author = 'khairi'
-set guioptions-=m
+" set guioptions-=m
 set guioptions-=T
 set mousemodel=popup
 
-" set initial width and height on launch
-set lines=30 columns=120
+if has("gui_running")
+  " GUI is running or is about to start.
+  " Maximize gvim window.
+  set lines=30 columns=120
+else
+  " This is console Vim.
+  if exists("+lines")
+    set lines=30
+  endif
+  if exists("+columns")
+    set columns=100
+  endif
+endif
 
 "php lint
 map <C-B> :!php -l %<CR>
@@ -152,7 +169,13 @@ highlight iCursor guifg=white guibg=steelblue
 au BufNewFile,BufRead *.jinja2 set filetype=jinja.html.javascript.css
 
 " remap increment and decrement
-:nnoremap <A-a> <C-a>
-:nnoremap <A-x> <C-x>
+nnoremap <A-a> <C-a>
+nnoremap <A-x> <C-x>
 
-let g:syntastic_python_flake8_post_args='--ignore=E128,E133,E126,E127,E124,E123,W601'
+ca WQ wq
+ca Wq wq
+ca W w
+ca Q q
+
+" syntastic config
+let g:syntastic_python_flake8_post_args='--ignore=W601,E121,E122,E123,E124,E126,E127,E128'
