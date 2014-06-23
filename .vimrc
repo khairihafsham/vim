@@ -17,44 +17,52 @@ set nocompatible
 
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle
+Plugin 'gmarik/Vundle.vim'
 
 " pep8 indent
-Bundle 'hynek/vim-python-pep8-indent'
+Plugin 'hynek/vim-python-pep8-indent'
 
 " nerdtree
-Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 
 " ultisnips
-Bundle "SirVer/ultisnips"
+Plugin 'SirVer/ultisnips'
 
 " zen coding
-Bundle "mattn/zencoding-vim"
+Plugin 'mattn/emmet-vim'
 
 " closetag
-Bundle "vim-scripts/closetag.vim"
+Plugin 'vim-scripts/closetag.vim'
 
 " surround
-Bundle "tpope/vim-surround"
+Plugin 'tpope/vim-surround'
 
 " supertab
-Bundle "ervandew/supertab"
+Plugin 'ervandew/supertab'
 
 " jinja-vim
-Bundle "uggedal/jinja-vim"
+Plugin 'mitsuhiko/vim-jinja'
 
 " syntastic
-Bundle "scrooloose/syntastic"
+Plugin 'scrooloose/syntastic'
 
 " color wombat
-Bundle "khairihafsham/Wombat"
+Plugin 'khairihafsham/Wombat'
 
 " rainbow parentheses
-Bundle 'amdt/vim-niji'
+Plugin 'amdt/vim-niji'
 
 " slimv, lisp support for vim
-Bundle 'vim-scripts/slimv.vim'
+Plugin 'vim-scripts/slimv.vim'
+
+" All of the Plugins must be added before the following line
+call vundle#end()
+filetype plugin indent on
+
 
 " Vim5 and later versions support syntax highlighting. Uncommenting the
 " following enables syntax highlighting by default.
