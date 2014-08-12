@@ -20,6 +20,12 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 
+" let Vundle manage Vundle
+Plugin 'gmarik/Vundle.vim'
+
+" pep8 indent
+Plugin 'hynek/vim-python-pep8-indent'
+
 " nerdtree
 Plugin 'scrooloose/nerdtree'
 
@@ -27,7 +33,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'SirVer/ultisnips'
 
 " zen coding
-Plugin 'mattn/zencoding-vim'
+Plugin 'mattn/emmet-vim'
 
 " closetag
 Plugin 'vim-scripts/closetag.vim'
@@ -39,7 +45,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'ervandew/supertab'
 
 " jinja-vim
-Plugin 'uggedal/jinja-vim'
+Plugin 'mitsuhiko/vim-jinja'
 
 " syntastic
 Plugin 'scrooloose/syntastic'
