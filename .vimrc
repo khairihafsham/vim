@@ -18,43 +18,54 @@ set nocompatible
 filetype off
 
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" pep8 indent
-Bundle 'hynek/vim-python-pep8-indent'
+call vundle#begin()
 
 " nerdtree
-Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 
 " ultisnips
-Bundle "SirVer/ultisnips"
+Plugin 'SirVer/ultisnips'
 
 " zen coding
-Bundle "mattn/zencoding-vim"
+Plugin 'mattn/zencoding-vim'
 
 " closetag
-Bundle "vim-scripts/closetag.vim"
+Plugin 'vim-scripts/closetag.vim'
 
 " surround
-Bundle "tpope/vim-surround"
+Plugin 'tpope/vim-surround'
 
 " supertab
-Bundle "ervandew/supertab"
+Plugin 'ervandew/supertab'
 
 " jinja-vim
-Bundle "uggedal/jinja-vim"
+Plugin 'uggedal/jinja-vim'
 
 " syntastic
-Bundle "scrooloose/syntastic"
+Plugin 'scrooloose/syntastic'
 
 " color wombat
-Bundle "khairihafsham/Wombat"
+Plugin 'khairihafsham/Wombat'
 
 " rainbow parentheses
-Bundle 'amdt/vim-niji'
+Plugin 'amdt/vim-niji'
 
 " slimv, lisp support for vim
-Bundle 'vim-scripts/slimv.vim'
+Plugin 'vim-scripts/slimv.vim'
+
+" pretty status line
+Plugin 'bling/vim-airline'
+
+" js better syntax
+Plugin 'jelera/vim-javascript-syntax'
+
+" gitgutter
+Plugin 'airblade/vim-gitgutter'
+
+" tagbar
+Plugin 'majutsushi/tagbar'
+
+call vundle#end()
 
 " Vim5 and later versions support syntax highlighting. Uncommenting the
 " following enables syntax highlighting by default.
@@ -74,11 +85,11 @@ endif
 
 " Uncomment the following to have Vim load indentation rules and plugins
 " according to the detected filetype.
-" if has("autocmd")
-"   filetype plugin indent on
-" endif
+if has("autocmd")
+  filetype plugin indent on
+endif
 
-filetype indent on
+" filetype indent on
 
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
@@ -111,6 +122,11 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
+
+" ft indent
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType html setlocal shiftwidth=2 tabstop=2
+
 
 :nmap <C-V> "+gP
 :imap <C-V> <ESC>l<C-V>i
@@ -179,3 +195,8 @@ ca Q q
 
 " syntastic config
 let g:syntastic_python_flake8_post_args='--ignore=W601,E121,E122,E123,E124,E126,E127,E128'
+
+" toggling tagbar
+nmap <F9> :TagbarToggle<CR>
+
+set tags=tags;/
