@@ -17,8 +17,11 @@ set nocompatible
 
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+
+" handle bar
+Plugin 'mustache/vim-mustache-handlebars'
 
 " let Vundle manage Vundle
 Plugin 'gmarik/Vundle.vim'
@@ -31,6 +34,9 @@ Plugin 'scrooloose/nerdtree'
 
 " ultisnips
 Plugin 'SirVer/ultisnips'
+
+" vim snippets
+Plugin 'honza/vim-snippets'
 
 " zen coding
 Plugin 'mattn/emmet-vim'
@@ -70,6 +76,15 @@ Plugin 'airblade/vim-gitgutter'
 
 " tagbar
 Plugin 'majutsushi/tagbar'
+
+" ctrlP
+Plugin 'kien/ctrlp.vim'
+
+" delimitmate
+Plugin 'Raimondi/delimitMate'
+
+" fugitive
+Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
 
@@ -118,7 +133,7 @@ set shiftwidth=4
 set expandtab
 set backupdir=~/.vim_backups
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
-nnoremap <silent> <C-P> :NERDTreeToggle<CR> 
+nnoremap <silent> <C-T> :NERDTreeToggle<CR> 
 
 " autocomplete funcs and identifiers for languages
 autocmd FileType python set omnifunc=pythoncomplete#Complete
@@ -130,8 +145,10 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 
 " ft indent
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
-autocmd FileType html setlocal shiftwidth=2 tabstop=2
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 sts=2
+autocmd FileType css setlocal shiftwidth=2 tabstop=2 sts=2
+autocmd FileType html setlocal shiftwidth=2 tabstop=2 sts=2
+autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2 sts=2
 
 
 :nmap <C-V> "+gP
@@ -188,7 +205,8 @@ let NERDTreeIgnore = ['\.pyc$']
 highlight Cursor guifg=white guibg=steelblue
 highlight iCursor guifg=white guibg=steelblue
 
-au BufNewFile,BufRead *.jinja2 set filetype=jinja.html.javascript.css
+au BufNewFile,BufRead *.jinja2 set filetype=htmljinja
+au BufNewFile,BufRead *.djt set filetype=htmldjango
 
 " remap increment and decrement
 nnoremap <A-a> <C-a>
@@ -201,8 +219,18 @@ ca Q q
 
 " syntastic config
 let g:syntastic_python_flake8_post_args='--ignore=W601,E121,E122,E123,E124,E126,E127,E128'
+let g:syntastic_html_checkers = ['']
+let g:syntastic_javascript_checkers = ['jsxhint']
 
 " toggling tagbar
 nmap <F9> :TagbarToggle<CR>
 
 set tags=tags;/
+
+let g:airline#extensions#whitespace#enabled = 0
+
+autocmd! GUIEnter * set vb t_vb=
+
+set gfn=Monaco:h14
+
+let g:mustache_abbreviations = 1
