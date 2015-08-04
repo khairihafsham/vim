@@ -59,9 +59,6 @@ Plugin 'scrooloose/syntastic'
 " color wombat
 Plugin 'khairihafsham/Wombat'
 
-" rainbow parentheses
-Plugin 'amdt/vim-niji'
-
 " slimv, lisp support for vim
 Plugin 'vim-scripts/slimv.vim'
 
@@ -85,6 +82,9 @@ Plugin 'Raimondi/delimitMate'
 
 " fugitive
 Plugin 'tpope/vim-fugitive'
+
+" vdebug
+Plugin 'joonty/vdebug'
 
 call vundle#end()
 
@@ -221,6 +221,7 @@ ca Q q
 let g:syntastic_python_flake8_post_args='--ignore=W601,E121,E122,E123,E124,E126,E127,E128'
 let g:syntastic_html_checkers = ['']
 let g:syntastic_javascript_checkers = ['jsxhint']
+let g:syntastic_php_phpcs_args='--standard=PSR2'
 
 " toggling tagbar
 nmap <F9> :TagbarToggle<CR>
@@ -231,6 +232,6 @@ let g:airline#extensions#whitespace#enabled = 0
 
 autocmd! GUIEnter * set vb t_vb=
 
-set gfn=Monaco:h14
-
 let g:mustache_abbreviations = 1
+
+let g:vdebug_options = {"path_maps":{"/var/www/html": "/home/khairi/www/bupper"}, "server": "172.17.42.1"}
