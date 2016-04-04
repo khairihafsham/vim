@@ -20,6 +20,9 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" hhvm hack
+Plugin 'hhvm/vim-hack'
+
 " handle bar
 Plugin 'mustache/vim-mustache-handlebars'
 
@@ -86,6 +89,12 @@ Plugin 'tpope/vim-fugitive'
 " vdebug
 Plugin 'joonty/vdebug'
 
+" highlight trailing whitespaces
+Plugin 'bronson/vim-trailing-whitespace'
+
+" fsharp binding
+Plugin 'fsharp/vim-fsharp'
+
 call vundle#end()
 
 " Vim5 and later versions support syntax highlighting. Uncommenting the
@@ -110,7 +119,7 @@ if has("autocmd")
   filetype plugin indent on
 endif
 
-" filetype indent on
+filetype indent on
 
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
@@ -126,8 +135,9 @@ set mouse=a		" Enable mouse usage (all modes)
 set hlsearch
 set langmenu=en_US.UTF-8
 colorscheme wombat 
-" set autoindent
-" set smartindent
+set autoindent
+set smartindent
+set cindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -149,6 +159,7 @@ autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 sts=2
 autocmd FileType css setlocal shiftwidth=2 tabstop=2 sts=2
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 sts=2
 autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2 sts=2
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 sts=2
 
 
 :nmap <C-V> "+gP
@@ -214,6 +225,7 @@ nnoremap <A-x> <C-x>
 
 ca WQ wq
 ca Wq wq
+ca Qa qa
 ca W w
 ca Q q
 
@@ -234,4 +246,26 @@ autocmd! GUIEnter * set vb t_vb=
 
 let g:mustache_abbreviations = 1
 
-let g:vdebug_options = {"path_maps":{"/var/www/html": "/home/khairi/www/bupper"}, "server": "172.17.42.1"}
+"autocmd BufWritePre * :%s/\s\+$//e
+"autocmd BufWritePre *.c :%s/\s\+$//e
+"autocmd BufWritePre *.cpp :%s/\s\+$//e
+"autocmd BufWritePre *.c++ :%s/\s\+$//e
+"autocmd BufWritePre *.h :%s/\s\+$//e
+"autocmd BufWritePre *.java :%s/\s\+$//e
+autocmd BufWritePre *.php :%s/\s\+$//e
+"autocmd BufWritePre *.pl :%s/\s\+$//e
+"autocmd BufWritePre *.py :%s/\s\+$//e
+
+let g:vdebug_options = {"path_maps":{"/var/www/html": "/home/khairi/www/bupper"}, "server": "172.17.0.1"}
+let g:vdebug_features = {'max_children': 128}
+
+"let g:SuperTabDefaultCompletionType = 'context'
+let g:SuperTabContextDefaultCompletionType = "<C-n>"
+"let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
+let g:SuperTabContextDiscoverDiscovery = ["&omnifunc:<C-x><C-o>"]
+
+autocmd FileType *
+  \ if &omnifunc != '' |
+  \   call SuperTabChain(&omnifunc, "<C-n>") |
+  \   call SuperTabSetDefaultCompletionType("<C-x><C-u>") |
+  \ endif
